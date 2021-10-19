@@ -26,12 +26,14 @@ jobs:
         username: ${{ secrets.AzureAppService_ContainerUsername_57d8695d422a41dc83146a1ab773d566 }}
         password: ${{ secrets.AzureAppService_ContainerPassword_836398d4aed34819bd150d01508ba548 }}
 
-    - name: Build and push container image to registry
+    - name: Build and push
+      id: docker_build
       uses: docker/build-push-action@v2
       with:
-        push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_57d8695d422a41dc83146a1ab773d566 }}/semm12/productservice-webshop:${{ github.sha }}
-        file: ./Dockerfile
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/productservice-webshop:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,4 +50,4 @@ jobs:
         app-name: 'productservice-onlineshop'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_c646ab23636147e7bf96cfe04639add6 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_57d8695d422a41dc83146a1ab773d566 }}/semm12/productservice-webshop:${{ github.sha }}'
+        images: ${{ secrets.DOCKER_HUB_USERNAME }}/productservice-webshop:latest
