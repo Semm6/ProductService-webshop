@@ -1,3 +1,1 @@
 # ProductService-webshop
-
-### Mapping
