@@ -38,9 +38,9 @@ public class ProductService {
 
     //update user
     public Product updateProduct(Product product) {
-        Product existingUser=productRepository.findById(product.getId()).orElse(null);
-        existingUser.setName(product.getName());
+        Product existingProduct=productRepository.findById(product.getId()).orElse(null);
+        existingProduct.setName(product.getName());
 
-        return productRepository.save(existingUser);
+        return productRepository.save(existingProduct);
     }
 }

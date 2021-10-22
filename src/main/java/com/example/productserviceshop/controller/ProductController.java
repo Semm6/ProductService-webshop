@@ -33,8 +33,8 @@ public class ProductController {
     }
 
     @PutMapping(value = "/update")
-    public Product updateProduct(@RequestBody Product user) {
-        return service.updateProduct(user);
+    public Product updateProduct(@RequestBody Product product) {
+        return service.updateProduct(product);
     }
 
     @DeleteMapping(value = "/delete/{id}")
