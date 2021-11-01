@@ -29,28 +29,28 @@ public class ProductAcceptanceTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    @Test
-    void getProductById() throws Exception {
-
-        mockMvc.perform(get("/api/product/" + 1))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    void getAllProducts() throws Exception {
-
-        mockMvc.perform(get("/api/products/"))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    void deleteProductById() throws Exception {
-
-        mockMvc.perform(delete("/api/delete/" + 3))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Product deleted" + 3)));
-    }
+//    @Test
+//    void getProductById() throws Exception {
+//
+//        mockMvc.perform(get("/api/product/" + 1))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
+//
+//    @Test
+//    void getAllProducts() throws Exception {
+//
+//        mockMvc.perform(get("/api/products/"))
+//                .andDo(print())
+//                .andExpect(status().isOk());
+//    }
+//
+//    @Test
+//    void deleteProductById() throws Exception {
+//
+//        mockMvc.perform(delete("/api/delete/" + 3))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(equalTo("Product deleted" + 3)));
+//    }
 }
