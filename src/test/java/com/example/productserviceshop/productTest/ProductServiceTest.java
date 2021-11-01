@@ -71,9 +71,4 @@ public class ProductServiceTest {
         //then
         verify(productRepository).deleteById(1);
     }
-
-    @Test
-    @Disabled
-    void updateProduct() {
-    }
 }
