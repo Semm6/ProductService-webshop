@@ -1,6 +1,7 @@
 package com.example.productserviceshop.controller;
 
 import com.example.productserviceshop.entity.Product;
+import com.example.productserviceshop.exception.RequestException;
 import com.example.productserviceshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,14 @@ public class ProductController {
     //Get products
     @GetMapping(value = "/products")
     public List<Product> findAllProducts() {
-        return service.getProducts();
+        try
+        {
+            return service.getProducts();
+        }
+        catch (Exception e)
+        {
+            throw new RequestException("Cannot get all students");
+        }
     }
 
     //Get products
