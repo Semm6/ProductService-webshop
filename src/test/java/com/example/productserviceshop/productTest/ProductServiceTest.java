@@ -9,10 +9,13 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import static org.mockito.Mockito.verify;
 
+@DataJpaTest
 public class ProductServiceTest {
 
     //testing mocked repo
