@@ -18,7 +18,13 @@ public class ProductController {
 
     @PostMapping("/addProduct")
     public Product addProduct(@RequestBody Product product) {
-        return service.saveProduct(product);
+        try {
+            return service.saveProduct(product);
+        }
+        catch (Exception e)
+        {
+            throw new RequestException("Not able to add product");
+        }
     }
 
     //Get products
@@ -37,16 +43,31 @@ public class ProductController {
     //Get products
     @GetMapping(value = "/product/{id}")
     public Product findProductById(@PathVariable int id) {
-        return service.getProductById(id);
+        try {
+            return service.getProductById(id);
+        }
+        catch (Exception e) {
+            throw new RequestException("Cannot get product by id");
+        }
     }
 
     @PutMapping(value = "/update")
     public Product updateProduct(@RequestBody Product product) {
-        return service.updateProduct(product);
+        try {
+            return service.updateProduct(product);
+        }
+        catch (Exception e) {
+            throw new RequestException("Cannot update product");
+        }
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public String deleteProduct(@PathVariable int id) {
-        return service.deleteProduct(id);
+        try {
+            return service.deleteProduct(id);
+        }
+        catch (Exception e) {
+            throw new RequestException("Cannot delete product");
+        }
     }
 }
