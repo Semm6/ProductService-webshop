@@ -129,16 +129,4 @@ public class ProductIntegrationTest {
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof RequestException))
                 .andExpect(result -> assertEquals("Cannot delete product", result.getResolvedException().getMessage()));
     }
-
-    @Disabled
-    @Test
-    void ShouldGetErrorMessageByCreatingProduct() throws Exception {
-
-        when(productService.saveProduct(new Product(1, "Fries", "nice fries", "20", "https://Niceimage.com"))).thenThrow(new RequestException("Product cannot be created"));
-
-        mockMvc.perform(post("/api/addProduct"))
-                .andDo(print()).andExpect(status().is4xxClientError())
-                .andExpect(result -> assertTrue(result.getResolvedException() instanceof RequestException))
-                .andExpect(result -> assertEquals("Product cannot be created", result.getResolvedException().getMessage()));
-    }
 }
