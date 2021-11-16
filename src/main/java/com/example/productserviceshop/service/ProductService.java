@@ -1,6 +1,7 @@
 package com.example.productserviceshop.service;
 
 import com.example.productserviceshop.entity.Product;
+import com.example.productserviceshop.exception.RequestException;
 import com.example.productserviceshop.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,30 +18,54 @@ public class ProductService {
 
     //post product
     public Product saveProduct(Product product) {
-        return productRepository.save(product);
+        try {
+            return productRepository.save(product);
+        }
+        catch (Exception e) {
+            throw new RequestException("Product cannot be created");
+        }
     }
 
     //get products
     public List<Product> getProducts() {
-        return productRepository.findAll();
+        try {
+            return productRepository.findAll();
+        }
+        catch (Exception e) {
+            throw new RequestException("Cannot get all products");
+        }
     }
 
+    //get product by id
     public Product getProductById (int id) {
-        return productRepository.findById(id).orElse(null);
+        try {
+            return productRepository.findById(id).orElse(null);
+        }
+        catch (Exception e) {
+            throw new RequestException("Cannot get product by id");
+        }
     }
 
     //delete product
     public String deleteProduct(int id) {
-        productRepository.deleteById(id);
-
-        return "Product deleted" + id;
+        try {
+            productRepository.deleteById(id);
+            return "Product deleted" + id;
+        }
+        catch (Exception e) {
+            throw new RequestException("Cannot delete product");
+        }
     }
 
     //update user
     public Product updateProduct(Product product) {
-        Product existingProduct=productRepository.findById(product.getId()).orElse(null);
-        existingProduct.setName(product.getName());
-
-        return productRepository.save(existingProduct);
+        try {
+            Product existingProduct=productRepository.findById(product.getId()).orElse(null);
+            existingProduct.setName(product.getName());
+            return productRepository.save(existingProduct);
+        }
+        catch (Exception e) {
+            throw new RequestException("Cannot edit product");
+        }
     }
 }
