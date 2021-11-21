@@ -1,5 +1,3 @@
-<img src="https://i.postimg.cc/brJmj50n/API.gif"/>
-
 # ProductService-webshop
 
 ![workflow](https://github.com/Semm6/ProductService-webshop/actions/workflows/test.yml/badge.svg?branch=development)
