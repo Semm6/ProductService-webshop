@@ -1,3 +1,5 @@
+<img src="https://i.postimg.cc/yYd7fh53/products.jpg"/>
+
 # ProductService-webshop
 
 ![workflow](https://github.com/Semm6/ProductService-webshop/actions/workflows/test.yml/badge.svg?branch=development)
