@@ -101,7 +101,7 @@ public class ProductIntegrationTest {
         mockMvc.perform(get("/api/products/"))
                 .andDo(print()).andExpect(status().is4xxClientError())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof RequestException))
-                .andExpect(result -> assertEquals("Cannot get all students", result.getResolvedException().getMessage()));
+                .andExpect(result -> assertEquals("Cannot get all products", result.getResolvedException().getMessage()));
     }
 
     @Test
