@@ -36,7 +36,7 @@ public class ProductController {
         }
         catch (Exception e)
         {
-            throw new RequestException("Cannot get all students");
+            throw new RequestException("Cannot get all products");
         }
     }
 
